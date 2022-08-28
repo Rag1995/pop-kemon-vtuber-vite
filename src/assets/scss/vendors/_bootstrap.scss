@@ -1,0 +1,168 @@
+// Required
+@import 'bootstrap/scss/functions';
+
+// Default variable overrides
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&family=Noto+Sans+TC:wght@500&family=Noto+Sans:wght@500&family=Titan+One&display=swap');
+
+$font-family-base: 'Noto Sans',
+'Noto Sans JP',
+'Noto Sans TC',
+'Titan One',
+cursive,
+Inter,
+Avenir,
+Helvetica,
+Arial,
+sans-serif;
+
+$navbar-nav-link-padding-x: .75rem;
+
+// Required
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// Optional Bootstrap components here
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/utilities';
+
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/tables';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/button-group';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/accordion';
+@import 'bootstrap/scss/breadcrumb';
+@import 'bootstrap/scss/pagination';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/alert';
+@import 'bootstrap/scss/progress';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/toasts';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/tooltip';
+@import 'bootstrap/scss/popover';
+@import 'bootstrap/scss/carousel';
+@import 'bootstrap/scss/spinners';
+@import 'bootstrap/scss/offcanvas';
+@import 'bootstrap/scss/placeholders';
+
+// Helpers
+@import 'bootstrap/scss/helpers';
+
+// Utilities
+@import 'bootstrap/scss/utilities/api';
+
+
+body {
+  color: $dark;
+}
+
+.dark {
+  body {
+    color: $light;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+$navbar-height: calc(2 * ($navbar-padding-y + $navbar-brand-padding-y) + $navbar-brand-height);
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  .bg#{$infix}-body {
+    @include media-breakpoint-up($next) {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.nav-item {
+  position: relative;
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+
+    &.active {
+      color: $blue-700;
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $blue;
+        top: calc(100% - 5px);
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.dark {
+  .nav-item {
+    .nav-link {
+      &.active {
+        color: $yellow;
+
+        &::after {
+          background-color: $yellow;
+        }
+      }
+    }
+  }
+
+  .dropdown-item.active {
+    color: $dark;
+    background-color: $yellow;
+  }
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($next) {
+        .navbar-collapse {
+          .navbar-nav {
+            height: calc(100vh - $navbar-height);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+body {
+  background-color: $cyan-500;
+}
+.dark {
+  body {
+    background-color: $dark;
+  }
+}
+
+main {
+  padding-top: $navbar-height;
+}
