@@ -4,6 +4,7 @@ export default {
   lang: 'Lang',
   about: 'About',
   description: 'This is a Special Project for my Favor Vtubers.\nPlease Follow and Subscribe these Quality and Awesome Vtubers!',
+  reference: 'References',
   vtuber: {
     arumao: 'Arumao',
     watagumo: 'Watagumo',

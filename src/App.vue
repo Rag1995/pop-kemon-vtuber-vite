@@ -4,9 +4,16 @@ import { storeToRefs } from 'pinia'
 import AppNavbar from '@/components/AppNavbar'
 import BackgroundCloud from '@/components/BackgroundCloud.vue'
 import BackgroundFirefly from '@/components/BackgroundFirefly.vue'
+import { useHead } from '@vueuse/head'
+import { useI18n } from 'vue-i18n'
 
 const store = useAppStore()
 const { isDark } = storeToRefs(store)
+
+const { t } = useI18n()
+useHead({
+  title: computed(() => t('title')),
+})
 </script>
 
 <template>
