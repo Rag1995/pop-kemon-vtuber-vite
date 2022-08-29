@@ -11,7 +11,7 @@ const getAssetsImage = (path: string) => {
 </script>
 
 <template>
-  <div class="position-absolute top-0 bottom-0 start-0 end-0">
+  <div class="overflow-hidden position-absolute top-0 bottom-0 start-0 end-0">
     <div
       v-for="i in 5" :key="i" draggable="false" class="cloud position-absolute bottom-0 start-0 end-0"
       :class="{ dark: isDark }" :style="{

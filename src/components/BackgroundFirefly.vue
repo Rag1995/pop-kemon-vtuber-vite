@@ -1,5 +1,5 @@
 <template>
-  <div class="position-absolute top-0 bottom-0 start-0 end-0">
+  <div class="overflow-hidden position-absolute top-0 bottom-0 start-0 end-0">
     <div v-for="i in 15" :key="i" class="firefly"></div>
   </div>
 </template>
