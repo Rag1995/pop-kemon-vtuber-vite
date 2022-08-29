@@ -32,11 +32,15 @@ const removeQueue = (uid: string) => {
   const idx = queue.findIndex((item) => item.uid === uid)
   if (idx > -1) queue.splice(idx, 1)
 }
+
+const getAssetsImage = (path: string) => {
+  return `${import.meta.env.BASE_URL}${path}`
+}
 const playSound = () => {
   const rng = genRandom(0, sounds.value.length)
   const uid = `${props.id}-${counter.value}`
   const howl = new Howl({
-    src: new URL(`../../assets/audio/${sounds.value[rng]}.m4a`, import.meta.url).href,
+    src: getAssetsImage(`assets/audio/${sounds.value[rng]}.m4a`),
     autoplay: false,
     loop: false,
     volume: genRandom(20, 50) / 100,
@@ -61,21 +65,18 @@ watch(pressed, (newValue) => {
 watch(() => props.id, () => {
   queue.forEach((item) => item.howl.stop())
 })
-
-const getAssetsImage = (path: string) => {
-  return new URL(path, import.meta.url).href
-}
 </script>
 
 <template>
   <div ref="target" class="pop" :class="[id, { pressed, play: isPlay }]">
-    <img :src="getAssetsImage(`../../assets/image/${id}_${isPlay ? 'laugh' : 'normal'}.png`)" draggable="false" class="w-100 h-100" />
+    <img :src="getAssetsImage(`assets/image/${id}_${isPlay ? 'laugh' : 'normal'}.png`)" draggable="false" class="w-100 h-100" />
   </div>
 </template>
 
 <style lang="postcss" scope>
 img{
   object-fit: contain;
+  object-position: 50% 100%;
 }
 .counter {
   -webkit-text-stroke: 3px black;

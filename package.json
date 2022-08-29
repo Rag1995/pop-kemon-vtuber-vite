@@ -12,12 +12,9 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
-    "@vueuse/components": "^9.1.0",
     "@vueuse/core": "^9.1.0",
     "@vueuse/head": "^0.7.9",
     "@vueuse/router": "^9.1.1",
-    "@vueuse/sound": "^1.1.7",
-    "animate.css": "^4.1.1",
     "bootstrap": "^5.2.0",
     "howler": "^2.2.3",
     "pinia": "^2.0.18",

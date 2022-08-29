@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { useAppStore } from '@/store'
+import { storeToRefs } from 'pinia'
 import BsNavItem from '@/components/utils/bootstrap/BsNavItem.vue'
 import IonLanguage from '~icons/ion/language'
 
-const isDark = useDark()
+const emit = defineEmits<Emits>()
+interface Emits {
+  (e: 'update'): void
+}
+
+const store = useAppStore()
+const { isDark } = storeToRefs(store)
 
 const { locale } = useI18n()
 const options = reactive([
@@ -10,6 +18,9 @@ const options = reactive([
   { text: '日本語', value: 'ja-JP' },
   { text: 'English', value: 'en-US' },
 ])
+watch(locale, () => {
+  emit('update')
+})
 </script>
 
 <template>

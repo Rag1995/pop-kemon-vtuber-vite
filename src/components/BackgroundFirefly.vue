@@ -1,5 +1,7 @@
 <template>
-  <div v-for="i in 15" :key="i" class="firefly"></div>
+  <div class="position-absolute top-0 bottom-0 start-0 end-0">
+    <div v-for="i in 15" :key="i" class="firefly"></div>
+  </div>
 </template>
 
 <style lang="scss" scope>

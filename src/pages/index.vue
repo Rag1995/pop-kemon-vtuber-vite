@@ -11,13 +11,14 @@ const { isDark } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div class="container pt-5 fs-5">
+  <div class="container pb-5 fs-5 lh-lg d-flex flex-column justify-content-center align-items-stretch h-100">
     <div class="card fs-5" :class="{ 'bg-dark border-secondary': isDark }">
       <div class="card-body">
         <h2 class="mb-4">
           {{ $t('about') }}
         </h2>
-        <div class="text-wrap text-break mb-4" v-html="$t('description')">
+        <div class="mb-4" style="white-space: pre-wrap;">
+          {{ $t('description') }}
         </div>
 
         <div v-for="{ id, name, youtube, twitter } in vtubers" :key="id" class="d-flex">
@@ -25,10 +26,10 @@ const { isDark } = storeToRefs(appStore)
             {{ $t(name) }}
           </div>
           <a class="text-red me-3" :href="youtube" target="_blank">
-            <IconYoutube />Youtube
+            <IconYoutube class="me-1" />Youtube
           </a>
           <a class="text-sky" :href="twitter" target="_blank">
-            <IconTwitter />Twitter
+            <IconTwitter class="me-1" />Twitter
           </a>
         </div>
       </div>
@@ -37,9 +38,6 @@ const { isDark } = storeToRefs(appStore)
 </template>
 
 <style lang="postcss" scope>
-.container {
-line-height: 2;
-}
 .text-sky {
   color: #1DA1F2;
 }

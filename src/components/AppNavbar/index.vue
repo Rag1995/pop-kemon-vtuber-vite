@@ -20,6 +20,11 @@ const collapse = ref<InstanceType<typeof BsCollapse>>()
 
 const vtubersStore = useVtubersStore()
 const { vtubers } = storeToRefs(vtubersStore)
+
+const toggle = () => {
+  toggleDark()
+  collapse.value?.hide()
+}
 </script>
 
 <template>
@@ -51,10 +56,15 @@ const { vtubers } = storeToRefs(vtubersStore)
       >
         <ul class="navbar-nav flex-grow-1">
           <RouterLink
-            v-for="{ id, name } in vtubers" :key="id" v-slot="{ isActive, href }" :to="`/vtuber/${id}`"
-            custom
+            v-for="{ id, name } in vtubers" :key="id" v-slot="{ isActive, navigate }"
+            :to="`/vtuber/${id}`" custom
           >
-            <BsNavItem :active="isActive" :href="href" @click="collapse?.hide()">
+            <BsNavItem
+              :active="isActive" @click="() => {
+                navigate();
+                collapse?.hide()
+              }"
+            >
               {{ $t(name) }}
             </BsNavItem>
           </RouterLink>
@@ -63,12 +73,12 @@ const { vtubers } = storeToRefs(vtubersStore)
             href=" https://github.com/Rag1995/pop-kemon-vtuber-vite" target="_blank" class="mt-3" :class="[
               `mt-${breakpoint}-0`,
               `ms-${breakpoint}-auto`,
-            ]"
+            ]" @click="collapse?.hide()"
           >
             <IconGithub class="me-1" />Github
           </BsNavItem>
 
-          <BsNavItem @click=" toggleDark()">
+          <BsNavItem @click="toggle()">
             <template v-if="isDark">
               <IconMoon class="me-1" />Dark
             </template>
@@ -77,7 +87,7 @@ const { vtubers } = storeToRefs(vtubersStore)
             </template>
           </BsNavItem>
 
-          <NavbarLang />
+          <NavbarLang @update="collapse?.hide()" />
         </ul>
       </BsCollapse>
     </div>
