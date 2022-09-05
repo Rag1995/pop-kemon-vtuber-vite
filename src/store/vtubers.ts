@@ -21,7 +21,7 @@ export const useVtubersStore = defineStore('vtubers', () => {
     active: boolean
     label: string
   }
-  const soundDict = reactive<Record<string, SoundDictItem[]>>({
+  const soundDict = useStorage<Record<string, SoundDictItem[]>>('soundDict', {
     arumao: [
       { fileName: 'arumao_01', active: true, label: '呵呵呵' },
       { fileName: 'arumao_02', active: true, label: '喝哈哈哈' },
@@ -40,7 +40,7 @@ export const useVtubersStore = defineStore('vtubers', () => {
       { fileName: 'watagumo_07', active: true, label: '吧吧吧吧吧' },
     ],
   })
-  const sounds = computed(() => soundDict[vtuberId.value] ?? [])
+  const sounds = computed(() => soundDict.value[vtuberId.value] ?? [])
 
   const counterDict = useStorage<Record<string, number>>('counter', {
     arumao: 0,
