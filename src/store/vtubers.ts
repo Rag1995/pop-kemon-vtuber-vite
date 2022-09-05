@@ -16,23 +16,28 @@ export const useVtubersStore = defineStore('vtubers', () => {
     { id: 'watagumo', name: 'vtuber.watagumo', youtube: 'https://www.youtube.com/c/watagumo_hyena', twitter: 'https://twitter.com/watagumo_hyena' },
   ])
 
-  const soundDict = reactive<Record<string, string[]>>({
+  interface SoundDictItem {
+    fileName: string
+    active: boolean
+    label: string
+  }
+  const soundDict = reactive<Record<string, SoundDictItem[]>>({
     arumao: [
-      'arumao_01',
-      'arumao_02',
-      'arumao_03',
-      'arumao_04',
-      'arumao_05',
-      'arumao_06',
+      { fileName: 'arumao_01', active: true, label: '呵呵呵' },
+      { fileName: 'arumao_02', active: true, label: '喝哈哈哈' },
+      { fileName: 'arumao_03', active: true, label: '哈哈哈' },
+      { fileName: 'arumao_04', active: true, label: '喝哈哈' },
+      { fileName: 'arumao_05', active: true, label: '呵呵呵' },
+      { fileName: 'arumao_06', active: true, label: '哈哈哈呵哼' },
     ],
     watagumo: [
-      'watagumo_01',
-      'watagumo_02',
-      'watagumo_03',
-      'watagumo_04',
-      'watagumo_05',
-      'watagumo_06',
-      'watagumo_07',
+      { fileName: 'watagumo_01', active: true, label: '哈哈哈哈' },
+      { fileName: 'watagumo_02', active: true, label: '哼哼哼' },
+      { fileName: 'watagumo_03', active: true, label: '哈哈哈' },
+      { fileName: 'watagumo_04', active: true, label: '呵呵呵哈哈' },
+      { fileName: 'watagumo_05', active: true, label: '哈哼' },
+      { fileName: 'watagumo_06', active: true, label: '咪咪' },
+      { fileName: 'watagumo_07', active: true, label: '吧吧吧吧吧' },
     ],
   })
   const sounds = computed(() => soundDict[vtuberId.value] ?? [])

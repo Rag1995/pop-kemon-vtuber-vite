@@ -5,6 +5,7 @@ export default {
   about: 'About',
   description: 'This is a Special Project for my Favor Vtubers.\nPlease Follow and Subscribe these Quality and Awesome Vtubers!',
   reference: 'References',
+  customSoundPack: 'Choose Sound Pack',
   vtuber: {
     arumao: 'Arumao',
     watagumo: 'Watagumo',

@@ -3,6 +3,7 @@ import { useVtubersStore } from '@/store'
 import { storeToRefs } from 'pinia'
 import type { MaybeElement } from '@vueuse/core'
 import { Howl } from 'howler'
+import SoundOffcanvas from '@/components/SoundOffcanvas.vue'
 
 const props = defineProps<{
   id: string
@@ -37,10 +38,13 @@ const getAssetsImage = (path: string) => {
   return `${import.meta.env.BASE_URL}${path}`
 }
 const playSound = () => {
-  const rng = genRandom(0, sounds.value.length)
+  const list = sounds.value.filter(({ active }) => active)
+  const count = list.length
+  if (count === 0) return
+  const rng = genRandom(0, count)
   const uid = `${props.id}-${counter.value}`
   const howl = new Howl({
-    src: getAssetsImage(`assets/audio/${sounds.value[rng]}.m4a`),
+    src: getAssetsImage(`assets/audio/${list[rng].fileName}.m4a`),
     autoplay: false,
     loop: false,
     volume: genRandom(20, 50) / 100,
@@ -69,18 +73,25 @@ watch(() => props.id, () => {
 
 <template>
   <div ref="target" class="pop" :class="[id, { pressed, play: isPlay }]">
-    <img :src="getAssetsImage(`assets/image/${id}_${isPlay ? 'laugh' : 'normal'}.png`)" draggable="false" class="w-100 h-100" />
+    <img
+      :src="getAssetsImage(`assets/image/${id}_${isPlay ? 'laugh' : 'normal'}.png`)" draggable="false"
+      class="w-100 h-100"
+    />
   </div>
+
+  <SoundOffcanvas />
 </template>
 
 <style lang="postcss" scope>
-img{
+img {
   object-fit: contain;
   object-position: 50% 100%;
 }
+
 .counter {
   -webkit-text-stroke: 3px black;
 }
+
 .pop {
   position: absolute;
   top: 20%;
@@ -98,6 +109,7 @@ img{
   &.pressed {
     transform: scale(1.05);
   }
+
   &.play {
     filter: opacity(1);
   }
