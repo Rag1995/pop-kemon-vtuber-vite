@@ -72,7 +72,7 @@ watch(() => props.id, () => {
 </script>
 
 <template>
-  <div ref="target" class="pop" :class="[id, { pressed, play: isPlay }]">
+  <div ref="target" class="overflow-hidden pop" :class="[id, { pressed, play: isPlay }]">
     <img
       :src="getAssetsImage(`assets/image/${id}_${isPlay ? 'laugh' : 'normal'}.png`)" draggable="false"
       class="w-100 h-100"
