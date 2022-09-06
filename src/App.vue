@@ -21,7 +21,7 @@ useHead({
   <main class="position-relative">
     <BackgroundCloud />
     <BackgroundFirefly v-if="isDark" />
-    <div class="overflow-auto h-100">
+    <div class="overflow-hidden h-100">
       <RouterView />
     </div>
   </main>
