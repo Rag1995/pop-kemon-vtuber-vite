@@ -18,7 +18,7 @@ useHead({
 
 <template>
   <AppNavbar />
-  <main class="position-relative">
+  <main class="position-relative overflow-hidden">
     <BackgroundCloud />
     <BackgroundFirefly v-if="isDark" />
     <div class="overflow-hidden h-100">
