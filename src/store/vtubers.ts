@@ -87,7 +87,26 @@ export const useVtubersStore = defineStore('vtubers', () => {
       { fileName: 'kamitani_15', active: true, label: '喝哼哼' },
       { fileName: 'kamitani_16', active: true, label: '嘿嘿嘿' },
     ],
-  })
+  },
+  localStorage,
+  {
+    mergeDefaults: (storageValue, defaults) => {
+      Object.keys(defaults).forEach((key) => {
+        if (!storageValue[key]) {
+          storageValue[key] = defaults[key]
+        }
+        else {
+          defaults[key].forEach((d) => {
+            const exist = storageValue[key].findIndex((s) => s.fileName === d.fileName) > -1
+            if (!exist)
+              storageValue[key].push(d)
+          })
+        }
+      })
+      return storageValue
+    },
+  },
+  )
   const sounds = computed(() => soundDict.value[vtuberId.value] ?? [])
 
   const counterDict = useStorage<Record<string, number>>('counter', {
