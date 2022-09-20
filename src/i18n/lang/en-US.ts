@@ -9,5 +9,7 @@ export default {
   vtuber: {
     arumao: 'Arumao',
     watagumo: 'Watagumo',
+    totent: 'Totent',
+    kamitani: 'Kamitani',
   },
 }

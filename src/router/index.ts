@@ -7,7 +7,7 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   if (to.name === 'vtuber-id') {
-    const list = ['arumao', 'watagumo']
+    const list = ['arumao', 'watagumo', 'totent', 'kamitani']
     const flag = list.indexOf(to.params.id as string) > -1
     if (flag) {
       next()

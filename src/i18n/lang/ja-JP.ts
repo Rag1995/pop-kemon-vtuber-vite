@@ -9,5 +9,7 @@ export default {
   vtuber: {
     arumao: 'アル毛',
     watagumo: 'わたぐも',
+    totent: '騰騰（とと）',
+    kamitani: 'かみたに',
   },
 }

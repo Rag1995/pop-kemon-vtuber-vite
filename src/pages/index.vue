@@ -47,6 +47,9 @@ const { isDark } = storeToRefs(appStore)
           </a>
         </p>
       </div>
+      <div class="mt-3">
+        <img id="vtuber-gif" src="@/assets/0.gif" />
+      </div>
     </div>
   </div>
 </template>
@@ -57,5 +60,8 @@ const { isDark } = storeToRefs(appStore)
 }
 .text-red {
   color: #FF0000;
+}
+#vtuber-gif {
+  max-width: 100%;
 }
 </style>
