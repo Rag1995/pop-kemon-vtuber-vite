@@ -27,7 +27,11 @@ const offcanvas = ref<InstanceType<typeof BsOffcanvas>>()
       <h5 class="offcanvas-title">
         {{ $t('customSoundPack') }}
       </h5>
-      <button type="button" class="btn-close btn-close-white" @click="offcanvas?.hide()"></button>
+      <button
+        type="button" class="btn-close" :class="{
+          'btn-close-white': isDark,
+        }" @click="offcanvas?.hide()"
+      ></button>
     </div>
     <div class="offcanvas-body">
       <div v-for="item in sounds" :key="item.fileName" class="form-check">
