@@ -53,6 +53,9 @@ export const useVtubersStore = defineStore('vtubers', () => {
       { fileName: 'watagumo_12', active: true, label: '喝哼' },
       { fileName: 'watagumo_13', active: true, label: '雅沒囉' },
       { fileName: 'watagumo_14', active: true, label: '咿呀' },
+      { fileName: 'watagumo_15', active: true, label: '鬣狗母語-01' },
+      { fileName: 'watagumo_16', active: true, label: '鬣狗母語-02' },
+      { fileName: 'watagumo_17', active: true, label: '倉鼠鬣狗(風痕影提供)' },
     ],
     totent: [
       { fileName: 'totent_01', active: true, label: '喝 呵呵' },
