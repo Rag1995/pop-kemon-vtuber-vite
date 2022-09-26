@@ -56,6 +56,11 @@ export const useVtubersStore = defineStore('vtubers', () => {
       { fileName: 'watagumo_15', active: true, label: '鬣狗母語-01' },
       { fileName: 'watagumo_16', active: true, label: '鬣狗母語-02' },
       { fileName: 'watagumo_17', active: true, label: '倉鼠鬣狗(風痕影提供)' },
+      { fileName: 'watagumo_18', active: true, label: '阿' },
+      { fileName: 'watagumo_19', active: true, label: '哎呦' },
+      { fileName: 'watagumo_20', active: true, label: '哺～～～～' },
+      { fileName: 'watagumo_21', active: true, label: '媽媽！！' },
+      { fileName: 'watagumo_22', active: true, label: '哇～～～～' },
     ],
     totent: [
       { fileName: 'totent_01', active: true, label: '喝 呵呵' },
@@ -100,10 +105,21 @@ export const useVtubersStore = defineStore('vtubers', () => {
         }
         else {
           defaults[key].forEach((d) => {
-            const exist = storageValue[key].findIndex((s) => s.fileName === d.fileName) > -1
+            const exist = storageValue[key].findIndex((s) => {
+              return s.fileName === d.fileName
+            }) > -1
             if (!exist)
               storageValue[key].push(d)
           })
+          storageValue[key] = storageValue[key]
+            .filter((s) => {
+              return defaults[key].findIndex((d) => {
+                return d.fileName === s.fileName
+              }) > -1
+            })
+            .sort((a, b) => {
+              return a.fileName < b.fileName ? -1 : 1
+            })
         }
       })
       return storageValue
