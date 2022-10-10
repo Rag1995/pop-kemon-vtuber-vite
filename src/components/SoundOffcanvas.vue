@@ -11,6 +11,12 @@ const vtubersStore = useVtubersStore()
 const { sounds } = storeToRefs(vtubersStore)
 
 const offcanvas = ref<InstanceType<typeof BsOffcanvas>>()
+
+const checkAll = (active: boolean) => {
+  sounds.value.forEach((sound) => {
+    sound.active = active
+  })
+}
 </script>
 
 <template>
@@ -34,6 +40,14 @@ const offcanvas = ref<InstanceType<typeof BsOffcanvas>>()
       ></button>
     </div>
     <div class="offcanvas-body">
+      <div class="d-flex flex-nowrap gap-3 mb-3">
+        <button type="button" class="btn btn-sm btn-primary" @click="checkAll(true)">
+          {{ $t('selectAll') }}
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" @click="checkAll(false)">
+          {{ $t('clear') }}
+        </button>
+      </div>
       <div v-for="item in sounds" :key="item.fileName" class="form-check">
         <input :id="`checkbox-${item.fileName}`" v-model="item.active" class="form-check-input" type="checkbox" />
         <label :for="`checkbox-${item.fileName}`" class="form-check-label">
