@@ -61,6 +61,7 @@ export const useVtubersStore = defineStore('vtubers', () => {
       { fileName: 'watagumo_20', active: true, label: '哺～～～～' },
       { fileName: 'watagumo_21', active: true, label: '媽媽！！' },
       { fileName: 'watagumo_22', active: true, label: '哇～～～～' },
+      { fileName: 'watagumo_23', active: true, label: '唯(匿名小夥伴提供)' },
     ],
     totent: [
       { fileName: 'totent_01', active: true, label: '喝 呵呵' },
